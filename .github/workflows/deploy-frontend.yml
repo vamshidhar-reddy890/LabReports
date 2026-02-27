@@ -17,10 +17,28 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      app_dir: ${{ steps.detect.outputs.app_dir }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Detect frontend directory
+        id: detect
+        run: |
+          if [ -f "frontend/package.json" ]; then
+            echo "app_dir=frontend" >> "$GITHUB_OUTPUT"
+          elif [ -f "package.json" ]; then
+            echo "app_dir=." >> "$GITHUB_OUTPUT"
+          elif [ -f "Lab Report/frontend/package.json" ]; then
+            echo "app_dir=Lab Report/frontend" >> "$GITHUB_OUTPUT"
+          else
+            echo "Could not find frontend package.json"
+            ls -la
+            exit 1
+          fi
+          echo "Detected app_dir=$(cat $GITHUB_OUTPUT)"
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,7 +46,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: frontend
+        working-directory: ${{ steps.detect.outputs.app_dir }}
         run: |
           if [ -f package-lock.json ]; then
             npm ci
@@ -37,7 +55,7 @@ jobs:
           fi
 
       - name: Build
-        working-directory: frontend
+        working-directory: ${{ steps.detect.outputs.app_dir }}
         env:
           VITE_API_BASE_URL: https://your-backend-url.com
         run: npm run build
@@ -48,7 +66,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          path: ${{ steps.detect.outputs.app_dir }}/dist
 
   deploy:
     needs: build
