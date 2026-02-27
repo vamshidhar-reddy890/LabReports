@@ -1,0 +1,80 @@
+{
+  "Hemoglobin": {
+    "male": { "min": 13.5, "max": 17.5 },
+    "female": { "min": 12.0, "max": 15.5 },
+    "unit": "g/dL",
+    "description": "Hemoglobin carries oxygen in your blood."
+  },
+  "WBC": {
+    "min": 4000,
+    "max": 11000,
+    "unit": "cells/mcL",
+    "description": "White blood cells help your body fight infection."
+  },
+  "RBC": {
+    "male": { "min": 4.7, "max": 6.1 },
+    "female": { "min": 4.2, "max": 5.4 },
+    "unit": "million cells/mcL",
+    "description": "Red blood cells carry oxygen throughout your body."
+  },
+  "Platelets": {
+    "min": 150000,
+    "max": 450000,
+    "unit": "platelets/mcL",
+    "description": "Platelets help blood clot and prevent bleeding."
+  },
+  "Glucose": {
+    "min": 70,
+    "max": 99,
+    "unit": "mg/dL",
+    "description": "Fasting glucose measures blood sugar level."
+  },
+  "Total Cholesterol": {
+    "min": 125,
+    "max": 200,
+    "unit": "mg/dL",
+    "description": "Total cholesterol reflects overall blood lipid balance."
+  },
+  "HDL": {
+    "min": 40,
+    "max": 80,
+    "unit": "mg/dL",
+    "description": "HDL is often called good cholesterol."
+  },
+  "LDL": {
+    "min": 0,
+    "max": 100,
+    "unit": "mg/dL",
+    "description": "LDL is often called bad cholesterol."
+  },
+  "Triglycerides": {
+    "min": 0,
+    "max": 150,
+    "unit": "mg/dL",
+    "description": "High triglycerides can increase heart risk over time."
+  },
+  "VLDL": {
+    "min": 5,
+    "max": 40,
+    "unit": "mg/dL",
+    "description": "VLDL carries triglycerides in blood and helps estimate lipid risk."
+  },
+  "Non-HDL Cholesterol": {
+    "min": 0,
+    "max": 130,
+    "unit": "mg/dL",
+    "description": "Non-HDL cholesterol reflects all potentially harmful cholesterol particles."
+  },
+  "Creatinine": {
+    "male": { "min": 0.74, "max": 1.35 },
+    "female": { "min": 0.59, "max": 1.04 },
+    "unit": "mg/dL",
+    "description": "Creatinine helps estimate kidney function."
+  },
+  "Vitamin D": {
+    "min": 20,
+    "max": 50,
+    "unit": "ng/mL",
+    "description": "Vitamin D is important for bone and immune health."
+  }
+}
